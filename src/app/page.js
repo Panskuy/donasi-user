@@ -3,6 +3,8 @@ import SectionSumbagan from "@/components/home/SectionSumbangan";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import prisma from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const user = await getCurrentUser();
   const sumbangan = await prisma.sumbangan.findMany();
