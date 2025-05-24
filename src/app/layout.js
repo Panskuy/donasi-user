@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} font-sans antialiased tracking-tight`}
       >
+        <Toaster position="top-center" />
         <Navbar />
         <main className="mt-16 w-full max-w-[1800px] mx-auto py-2">
           {children}
