@@ -1,6 +1,7 @@
 import Hero from "@/components/home/Hero";
 import SectionSumbagan from "@/components/home/SectionSumbangan";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
+import prisma from "@/lib/prisma";
 
 export default async function Home() {
   const user = await getCurrentUser();
