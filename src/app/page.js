@@ -4,7 +4,7 @@ import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 
 export default async function Home() {
   const user = await getCurrentUser();
-  let sumbangan = await prisma.sumbangan.findMany();
+  const sumbangan = await prisma.sumbangan.findMany();
 
   return (
     <div className="w-full">
