@@ -1,4 +1,6 @@
 import ButtonTambahDonasi from "@/components/sumbangan/ButtonTambahDonasi";
+import CommentInput from "@/components/sumbangan/CommentInput";
+import CommentSection from "@/components/sumbangan/CommentSection";
 import SumbanganHistoryUser from "@/components/sumbangan/SumbanganHistoryUser";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import prisma from "@/lib/prisma";
@@ -14,6 +16,7 @@ const Page = async ({ params }) => {
     where: { id },
     include: {
       donasi: true,
+      comment: true,
     },
   });
 
@@ -75,6 +78,11 @@ const Page = async ({ params }) => {
         {user ? (
           <SumbanganHistoryUser userId={user.id} sumbanganId={id} />
         ) : null}
+      </div>
+
+      <div className="w-full mt-2">
+        <CommentInput userId={user.id} sumbanganId={sumbangan.id} />
+        <CommentSection commentData={sumbangan.comment} />
       </div>
     </div>
   );

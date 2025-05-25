@@ -3,7 +3,7 @@ import React from "react";
 
 const SectionSumbagan = async ({ sumbangan, title, href }) => {
   return (
-    <section className="mx-auto px-6 py-12">
+    <section className="mx-auto py-12">
       <h2 className="text-3xl font-bold text-green-900 mb-10 text-center">
         {title}
       </h2>

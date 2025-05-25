@@ -21,6 +21,7 @@ model User {
   accounts      Account[]
   donasi        Donasi[]
   sessions      Session[]
+  comment       comment[]
 }
 
 model Account {
@@ -58,15 +59,16 @@ model VerificationToken {
 }
 
 model Sumbangan {
-  id                String   @id @default(uuid())
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  id                String    @id @default(uuid())
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
   title             String
   description       String
   kategori          String
   location          String
-  status_pengiriman String?  @default("menunggu")
+  status_pengiriman String?   @default("menunggu")
   donasi            Donasi[]
+  comment           comment[]
 
   @@map("sumbangan")
 }
@@ -81,4 +83,15 @@ model Donasi {
   status_pengiriman String?   @default("menunggu")
   sumbangan         Sumbangan @relation(fields: [sumbanganId], references: [id], onDelete: Cascade)
   user              User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model comment {
+  id          String    @id @default(uuid())
+  content     String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+  sumbanganId String
+  sumbangan   Sumbangan @relation(fields: [sumbanganId], references: [id], onDelete: Cascade)
+  User        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
