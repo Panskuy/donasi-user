@@ -58,25 +58,27 @@ model VerificationToken {
 }
 
 model Sumbangan {
-  id          String   @id @default(uuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  title       String
-  description String
-  kategori    String
-  location    String
-  donasi      Donasi[]
+  id                String   @id @default(uuid())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  title             String
+  description       String
+  kategori          String
+  location          String
+  status_pengiriman String?  @default("menunggu")
+  donasi            Donasi[]
 
   @@map("sumbangan")
 }
 
 model Donasi {
-  id          String    @id @default(uuid())
-  sumbanganId String
-  item        String[]
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  userId      String?
-  sumbangan   Sumbangan @relation(fields: [sumbanganId], references: [id], onDelete: Cascade)
-  user        User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String    @id @default(uuid())
+  sumbanganId       String
+  item              String[]
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  userId            String?
+  status_pengiriman String?   @default("menunggu")
+  sumbangan         Sumbangan @relation(fields: [sumbanganId], references: [id], onDelete: Cascade)
+  user              User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

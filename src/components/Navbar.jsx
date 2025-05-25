@@ -2,23 +2,59 @@ import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import Link from "next/link";
 import React from "react";
 import LoginButton from "./Buttons";
+import Image from "next/image";
 
 const Navbar = async () => {
   const user = await getCurrentUser();
+
   return (
-    <div className="fixed top-0 left-0 w-full ">
-      <div className="w-full max-w-7xl mx-auto flex justify-between items-center bg-green-700 text-white rounded-b-2xl p-4">
-        <Link href={"/"} className="font-bold text-2xl">
+    <header className="fixed top-0 left-0 w-full bg-green-700 text-white shadow-md z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center p-4 px-6">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="text-2xl font-bold tracking-wide hover:opacity-90"
+        >
           Logo
         </Link>
 
-        <ul>
-          <Link href={"/"}>Home</Link>
-        </ul>
+        {/* Nav links */}
+        <nav className="hidden md:flex gap-6 text-white font-medium -mr-60">
+          <Link href="/" className="hover:underline underline-offset-4">
+            Beranda
+          </Link>
+          <Link
+            href="/sumbangan"
+            className="hover:underline underline-offset-4"
+          >
+            Program
+          </Link>
+          <Link href="/tentang" className="hover:underline underline-offset-4">
+            Tentang
+          </Link>
+        </nav>
 
-        <LoginButton user={user} />
+        {/* User Info & Button */}
+        <div className="flex items-center gap-4">
+          {user ? (
+            <Link href={"/account"} className="flex items-center gap-3">
+              <div className="text-right hidden sm:block">
+                <p className="text-sm font-semibold">{user.name}</p>
+                <p className="text-sm opacity-80">{user.email}</p>
+              </div>
+              <Image
+                src={user.image || "/default-avatar.png"}
+                alt="User Avatar"
+                width={40}
+                height={40}
+                className="rounded-full border-2 border-white shadow-sm"
+              />
+            </Link>
+          ) : null}
+          <LoginButton user={user} />
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

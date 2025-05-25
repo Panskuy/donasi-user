@@ -24,5 +24,12 @@ export const authOptions = {
       session.user.role = user.role;
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // Jika url tidak ada, redirect ke baseUrl (homepage)
+      if (url.startsWith(baseUrl)) {
+        return url;
+      }
+      return baseUrl;
+    },
   },
 };

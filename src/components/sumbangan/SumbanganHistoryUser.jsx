@@ -33,9 +33,12 @@ const SumbanganHistoryUser = async ({ userId, sumbanganId }) => {
               key={item.id}
               className="p-4 border border-green-300 rounded-md bg-green-50"
             >
-              <p className="font-semibold text-green-800">
-                ID Donasi: {item.id}
-              </p>
+              <h1 className="font-semibold text-green-700 flex gap-2">
+                Status Pengiriman:{" "}
+                <p className=" text-green-900 first-letter:uppercase">
+                  {item.status_pengiriman}
+                </p>
+              </h1>
               <p className="text-sm text-green-700 mt-2">
                 Item: {item.item.join(", ")}
               </p>
