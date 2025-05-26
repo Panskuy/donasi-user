@@ -43,8 +43,6 @@ const CommentInput = ({ userId, sumbanganId }) => {
 
   return (
     <div className="w-full bg-white rounded-2xl shadow-sm mt-4">
-      <h1 className="text-2xl font-semibold text-green-800 mb-3">Komentar</h1>
-
       <form
         onSubmit={handleCommentPost}
         className="flex items-center space-x-2"

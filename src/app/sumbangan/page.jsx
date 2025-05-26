@@ -3,7 +3,11 @@ import prisma from "@/lib/prisma";
 import React from "react";
 
 const page = async () => {
-  const sumbangan = await prisma.sumbangan.findMany();
+  const sumbangan = await prisma.sumbangan.findMany({
+    where: {
+      isShow: true,
+    },
+  });
   return (
     <div>
       <SectionSumbagan sumbangan={sumbangan} title="Program Donasi Kami" />

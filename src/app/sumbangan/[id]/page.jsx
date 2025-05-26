@@ -16,7 +16,11 @@ const Page = async ({ params }) => {
     where: { id },
     include: {
       donasi: true,
-      comment: true,
+      comment: {
+        include: {
+          user: true,
+        },
+      },
     },
   });
 
@@ -46,7 +50,7 @@ const Page = async ({ params }) => {
           />
 
           <div className="w-full mt-6 flex flex-col sm:flex-row gap-3 items-center justify-between">
-            <p className="w-full lg:w-fit text-center lg:text-start bg-green-100 text-green-800 px-4 py-2 rounded-lg text-sm sm:text-base font-medium">
+            <p className="w-full lg:w-fit text-center lg:text-start bg-primary-dark text-white px-4 py-2 rounded-lg text-sm sm:text-base font-medium">
               Total Semua Donasi:{" "}
               <span className="font-bold">{sumbangan.donasi.length}</span>
             </p>
@@ -58,17 +62,12 @@ const Page = async ({ params }) => {
         </div>
 
         {/* Informasi detail */}
-        <div className="text-green-900 text-justify w-full">
-          <h1 className="text-4xl font-bold text-green-700 leading-tight mb-3">
+        <div className="text-justify w-full">
+          <h1 className="text-4xl font-bold text-text-primary leading-tight mb-3 first-letter:uppercase">
             {sumbangan.title}
           </h1>
 
-          <p className="text-md font-medium mb-4 border-b pb-2 border-green-300">
-            Kategori:{" "}
-            <span className="text-green-800">{sumbangan.kategori}</span>
-          </p>
-
-          <p className="text-base leading-relaxed whitespace-pre-line">
+          <p className="text-base leading-relaxed whitespace-pre-line text-text-secondary">
             {sumbangan.description}
           </p>
         </div>
@@ -81,7 +80,12 @@ const Page = async ({ params }) => {
       </div>
 
       <div className="w-full mt-2">
-        <CommentInput userId={user.id} sumbanganId={sumbangan.id} />
+        <h1 className="text-2xl font-semibold text-green-800 mb-3">Komentar</h1>
+
+        {user ? (
+          <CommentInput userId={user.id} sumbanganId={sumbangan.id} />
+        ) : null}
+
         <CommentSection commentData={sumbangan.comment} />
       </div>
     </div>

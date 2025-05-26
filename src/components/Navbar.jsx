@@ -8,18 +8,22 @@ const Navbar = async () => {
   const user = await getCurrentUser();
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-green-700 text-white shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full bg-background-light text-primary shadow-md z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center p-4 px-6">
         {/* Logo */}
         <Link
           href="/"
           className="text-2xl font-bold tracking-wide hover:opacity-90"
         >
-          Logo
+          KASIBA.COM
         </Link>
 
         {/* Nav links */}
-        <nav className="hidden md:flex gap-6 text-white font-medium -mr-60">
+        <nav
+          className={`hidden md:flex gap-6 text-text-primary font-medium ${
+            user ? "-mr-36" : null
+          }`}
+        >
           <Link href="/" className="hover:underline underline-offset-4">
             Beranda
           </Link>
@@ -37,7 +41,10 @@ const Navbar = async () => {
         {/* User Info & Button */}
         <div className="flex items-center gap-4">
           {user ? (
-            <Link href={"/account"} className="flex items-center gap-3">
+            <Link
+              href={"/account"}
+              className="flex items-center gap-3 text-text-primary"
+            >
               <div className="text-right hidden sm:block">
                 <p className="text-sm font-semibold">{user.name}</p>
                 <p className="text-sm opacity-80">{user.email}</p>

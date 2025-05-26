@@ -1,3 +1,4 @@
+import { NavbarAccount } from "@/components/account/NavbarAccount";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import { redirect } from "next/navigation";
 
@@ -5,7 +6,14 @@ const layout = async ({ children }) => {
   const user = await getCurrentUser();
 
   if (!user) return redirect("/");
-  return <div>{children}</div>;
+  return (
+    <div className="w-full px-2 ">
+      <NavbarAccount />
+      <div className="">
+        <div className="mt-28">{children}</div>
+      </div>
+    </div>
+  );
 };
 
 export default layout;

@@ -21,7 +21,7 @@ model User {
   accounts      Account[]
   donasi        Donasi[]
   sessions      Session[]
-  comment       comment[]
+  comment       Comment[]
 }
 
 model Account {
@@ -66,9 +66,10 @@ model Sumbangan {
   description       String
   kategori          String
   location          String
+  isShow          Boolean?   @default(true)
   status_pengiriman String?   @default("menunggu")
   donasi            Donasi[]
-  comment           comment[]
+  comment           Comment[]
 
   @@map("sumbangan")
 }
@@ -83,9 +84,11 @@ model Donasi {
   status_pengiriman String?   @default("menunggu")
   sumbangan         Sumbangan @relation(fields: [sumbanganId], references: [id], onDelete: Cascade)
   user              User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("donasi")
 }
 
-model comment {
+model Comment {
   id          String    @id @default(uuid())
   content     String
   createdAt   DateTime  @default(now())
@@ -93,5 +96,7 @@ model comment {
   userId      String
   sumbanganId String
   sumbangan   Sumbangan @relation(fields: [sumbanganId], references: [id], onDelete: Cascade)
-  User        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("comment")
 }
