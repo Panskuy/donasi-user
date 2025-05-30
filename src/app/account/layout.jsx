@@ -10,7 +10,7 @@ const layout = async ({ children }) => {
     <div className="w-full px-2 ">
       <NavbarAccount />
       <div className="">
-        <div className="mt-28">{children}</div>
+        <div className="mt-20">{children}</div>
       </div>
     </div>
   );

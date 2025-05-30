@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import Image from "next/image";
 import React from "react";
 import { UserIcon, MailIcon, PhoneIcon, ShieldCheckIcon } from "lucide-react";
+import { EditProfileButtons } from "@/components/account/ProfileButtons";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +23,6 @@ const page = async () => {
       </h1>
 
       <div className="bg-white rounded-xl shadow-md p-8 flex flex-col md:flex-row gap-8">
-        {/* Avatar */}
         <div className="flex-shrink-0 flex flex-col items-center gap-4">
           <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg">
             <Image
@@ -36,7 +36,7 @@ const page = async () => {
             {findUser?.name || "Pengguna"}
           </p>
           {/* Optional Edit button */}
-          {/* <button className="px-4 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition">Edit Profil</button> */}
+          <EditProfileButtons user={findUser} />
         </div>
 
         {/* User Info */}

@@ -20,7 +20,7 @@ const page = async () => {
 
   return (
     <div className=" mx-auto">
-      <h1 className="text-3xl font-semibold text-green-800 mb-8">
+      <h1 className="text-3xl font-semibold text-text-primary mb-8">
         Riwayat Donasi
       </h1>
 

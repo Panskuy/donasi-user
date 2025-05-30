@@ -2,10 +2,10 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center mt-96 ">
+    <div className="flex items-center justify-center h-screen ">
       <div className="flex flex-col items-center space-y-4">
         <svg
-          className="animate-spin h-12 w-12 text-green-500"
+          className="animate-spin h-12 w-12 text-blue-500"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -24,7 +24,7 @@ const Loading = () => {
             d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
           />
         </svg>
-        <p className="text-green-600 text-lg font-medium">Tunggu...</p>
+        <p className="text-blue-600 text-lg font-medium">Tunggu...</p>
       </div>
     </div>
   );

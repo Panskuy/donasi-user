@@ -7,35 +7,55 @@ import Image from "next/image";
 const Navbar = async () => {
   const user = await getCurrentUser();
 
+  const NavList = [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "Program",
+      link: "/sumbangan",
+    },
+    {
+      name: "Blog",
+      link: "/blog",
+    },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 w-full bg-background-light text-primary shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full bg-white text-primary shadow-md z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center p-4 px-6">
         {/* Logo */}
         <Link
           href="/"
-          className="text-2xl font-bold tracking-wide hover:opacity-90"
+          className="text-2xl font-bold tracking-wide hover:opacity-90 flex items-center gap-2"
         >
-          KASIBA.COM
+          <Image
+            src={"/images/logoKasiba1.png"}
+            width={40}
+            height={10}
+            alt="logo Kasiba"
+            className=" rounded-md"
+          />
+          <h1 className="text-gray-800">KASIBA.COM</h1>
         </Link>
 
-        {/* Nav links */}
         <nav
           className={`hidden md:flex gap-6 text-text-primary font-medium ${
-            user ? "-mr-36" : null
+            user ? "-mr-28" : null
           }`}
         >
-          <Link href="/" className="hover:underline underline-offset-4">
-            Beranda
-          </Link>
-          <Link
-            href="/sumbangan"
-            className="hover:underline underline-offset-4"
-          >
-            Program
-          </Link>
-          <Link href="/tentang" className="hover:underline underline-offset-4">
-            Tentang
-          </Link>
+          {NavList.map((item, index) => {
+            return (
+              <Link
+                href={item.link}
+                key={index}
+                className="hover:underline underline-offset-4 hover:scale-110 transition-transform duration-200"
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* User Info & Button */}

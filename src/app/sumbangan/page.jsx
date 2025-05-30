@@ -9,7 +9,7 @@ const page = async () => {
     },
   });
   return (
-    <div>
+    <div className="mt-10">
       <SectionSumbagan sumbangan={sumbangan} title="Program Donasi Kami" />
     </div>
   );

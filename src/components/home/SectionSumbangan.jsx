@@ -1,13 +1,10 @@
 import Link from "next/link";
 import React from "react";
 
-const SectionSumbagan = async ({ sumbangan, title, href }) => {
+const SectionSumbagan = async ({ sumbangan, href }) => {
   if (!sumbangan || sumbangan.length === 0) {
     return (
       <section className="mx-auto py-12">
-        <h2 className="text-3xl font-bold text-primary mb-10 text-center">
-          {title}
-        </h2>
         <p className="text-center text-text-secondary">
           Tidak ada sumbangan yang tersedia saat ini.
         </p>
@@ -16,9 +13,6 @@ const SectionSumbagan = async ({ sumbangan, title, href }) => {
   }
   return (
     <section className="mx-auto">
-      <h2 className="text-3xl font-bold text-primary mb-10 text-center">
-        {title}
-      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {sumbangan.map((item) => (
           <Link
@@ -42,7 +36,7 @@ const SectionSumbagan = async ({ sumbangan, title, href }) => {
 
       {href ? (
         <Link href={href} className="flex justify-end mt-6">
-          <span className="bg-primary px-4 py-2 rounded-lg text-white border border-green-600/20">
+          <span className="bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-lg text-white border border-green-600/20">
             Lihat Semua
           </span>
         </Link>

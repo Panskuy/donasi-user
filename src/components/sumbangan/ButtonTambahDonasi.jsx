@@ -6,15 +6,18 @@ import toast from "react-hot-toast";
 
 const ButtonTambahDonasi = ({ userId, sumbanganId }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [items, setItems] = useState("");
+  const [isSend, setIsSend] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSend(true);
 
-    // Validasi sederhana
     if (!items.trim()) {
       toast.error("Mohon isi daftar item donasi");
+      setIsSend(false);
       return;
     }
 
@@ -37,48 +40,63 @@ const ButtonTambahDonasi = ({ userId, sumbanganId }) => {
       if (!res.ok) throw new Error("Gagal donasi");
 
       toast.success("Donasi berhasil ditambahkan!");
-      setIsOpen(false);
       setItems("");
+      closeModal();
       router.refresh();
     } catch (error) {
       toast.error(error.message || "Terjadi kesalahan");
+      setIsSend(false);
     }
   };
 
+  const closeModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsOpen(false);
+      setIsClosing(false);
+      setIsSend(false);
+    }, 200);
+  };
+
   return (
-    <div className="w-full lg:w-fit">
+    <div className="w-full lg:w-fit z-50">
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg text-sm sm:text-base transition"
+        className="w-full bg-blue-800 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-sm sm:text-base transition"
       >
         Donasi Sekarang
       </button>
 
       {isOpen && (
         <>
-          {/* Overlay */}
+          {/* Backdrop */}
           <div
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/50 z-40"
+            onClick={closeModal}
+            className={`fixed inset-0 bg-black/30 z-40 transition-opacity backdrop-blur-sm duration-100 ${
+              isClosing ? "opacity-0" : "opacity-100"
+            }`}
           />
 
           {/* Modal */}
           <div
             role="dialog"
             aria-modal="true"
-            className="fixed top-1/2 left-1/2 z-50 max-w-lg w-full p-6 bg-white rounded-lg shadow-lg -translate-x-1/2 -translate-y-1/2"
+            className={`fixed top-1/2 left-1/2 z-50 max-w-lg w-full p-6 bg-white rounded-lg shadow-lg transform -translate-x-1/2 -translate-y-1/2 transition-all  duration-300 ${
+              isClosing ? "opacity-0 scale-95" : "opacity-100 scale-100"
+            }`}
           >
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-green-800 text-xl font-semibold">
                 Form Donasi
               </h2>
               <button
-                onClick={() => setIsOpen(false)}
-                className=" bg-green-100 hover:bg-green-800 text-green-800 hover:text-white px-4 py-2 rounded"
+                onClick={closeModal}
+                className="bg-blue-100 hover:bg-blue-800 text-blue-800 hover:text-white px-4 py-2 rounded-lg transition-all"
               >
                 Tutup
               </button>
             </div>
+
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <label className="text-green-900 font-medium">
                 Daftar Item Donasi (pisahkan dengan koma):
@@ -93,9 +111,10 @@ const ButtonTambahDonasi = ({ userId, sumbanganId }) => {
 
               <button
                 type="submit"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg text-sm sm:text-base transition"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-sm sm:text-base transition"
+                disabled={isSend}
               >
-                Kirim Donasi
+                {isSend ? "Mengirim..." : "Kirim Donasi"}
               </button>
             </form>
           </div>

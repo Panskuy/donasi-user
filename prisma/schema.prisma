@@ -19,9 +19,9 @@ model User {
   role          String?   @default("user")
   emailVerified DateTime?
   accounts      Account[]
-  donasi        Donasi[]
   sessions      Session[]
   comment       Comment[]
+  donasi        Donasi[]
 }
 
 model Account {
@@ -66,10 +66,11 @@ model Sumbangan {
   description       String
   kategori          String
   location          String
-  isShow          Boolean?   @default(true)
   status_pengiriman String?   @default("menunggu")
-  donasi            Donasi[]
+  isShow            Boolean   @default(true)
+  blog              blog[]
   comment           Comment[]
+  donasi            Donasi[]
 
   @@map("sumbangan")
 }
@@ -92,11 +93,22 @@ model Comment {
   id          String    @id @default(uuid())
   content     String
   createdAt   DateTime  @default(now())
-  updatedAt   DateTime @updatedAt
+  updatedAt   DateTime  @updatedAt
   userId      String
   sumbanganId String
   sumbangan   Sumbangan @relation(fields: [sumbanganId], references: [id], onDelete: Cascade)
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("comment")
+}
+
+model blog {
+  id          String    @id
+  title       String
+  content     String
+  isShow      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime
+  sumbanganId String
+  sumbangan   Sumbangan @relation(fields: [sumbanganId], references: [id], onDelete: Cascade)
 }

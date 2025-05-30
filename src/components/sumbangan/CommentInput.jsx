@@ -54,12 +54,12 @@ const CommentInput = ({ userId, sumbanganId }) => {
           placeholder="Tulis komentar Anda..."
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className="flex-1 h-10 px-4 rounded-lg border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-200"
+          className="flex-1 h-10 px-4 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200"
           disabled={loading}
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-200 disabled:opacity-60"
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 disabled:opacity-60"
           disabled={loading}
         >
           {loading ? "Mengirim..." : "Kirim"}
