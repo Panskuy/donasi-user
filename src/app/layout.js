@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       >
         <Toaster position="top-center" />
         <Navbar />
-        <main className="min-h-screen py-16 w-full max-w-[1600px] mx-auto px-2">
+        <main className="min-h-screen py-16 w-full max-w-[1800px] mx-auto px-2">
           {children}
         </main>
 
