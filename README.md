@@ -8,11 +8,11 @@ A modern fullstack web application for managing **Kas Iuran Warga** with seamles
 
 ## Frontend
 
-- ⚛️ **Next.js** (App Router)
-- 🎨 **Tailwind CSS**
-- 🧱 **shadcn/ui** – beautiful, accessible UI components
-- 🔐 **NextAuth.js** – secure and flexible authentication
-- 🧩 **Lucide Icons** – elegant open-source icon set
+- **Next.js** (App Router)
+- **Tailwind CSS**
+- **shadcn/ui** – beautiful, accessible UI components
+- **NextAuth.js** – secure and flexible authentication
+- **Lucide React** – elegant open-source icon set
 
 ## Backend
 
