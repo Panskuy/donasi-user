@@ -4,20 +4,12 @@ import React from "react";
 export const NavbarAccount = () => {
   const NavPageList = [
     {
-      name: "Dashboard",
-      href: "/account",
-    },
-    {
       name: "Profile",
       href: "/account/profile",
     },
     {
-      name: "Sumbangan",
+      name: "History Donasi",
       href: "/account/sumbangan",
-    },
-    {
-      name: "Pengaturan",
-      href: "/account/settings",
     },
   ];
 

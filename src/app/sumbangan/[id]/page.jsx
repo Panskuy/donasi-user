@@ -1,12 +1,13 @@
 import BlogSection from "@/components/sumbangan/BlogSection";
-import ButtonTambahDonasi from "@/components/sumbangan/ButtonTambahDonasi";
+
 import CommentInput from "@/components/sumbangan/CommentInput";
 import CommentSection from "@/components/sumbangan/CommentSection";
 import SumbanganDetail from "@/components/sumbangan/SumbanganDetail";
 import SumbanganHistoryUser from "@/components/sumbangan/SumbanganHistoryUser";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import prisma from "@/lib/prisma";
-import Image from "next/image";
+import { BookOpen } from "lucide-react";
+
 import React from "react";
 
 export const dynamic = "force-dynamic";
@@ -40,11 +41,14 @@ const Page = async ({ params }) => {
   }
 
   return (
-    <div className="w-full mt-10 px-4 md:px-6">
+    <div className="w-full mt-10 px-4 md:px-6 space-y-16">
       <SumbanganDetail sumbangan={sumbangan} user={user} />
 
       <div className="mt-3 w-full mb-3">
-        <h1 className="text-xl font-bold mb-3">Blog</h1>
+        <h1 className="text-xl font-bold mb-16 flex items-center gap-2">
+          <BookOpen className="text-blue-600" />
+          Blog
+        </h1>
 
         <BlogSection blog={sumbangan.blog} />
       </div>

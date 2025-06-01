@@ -17,6 +17,7 @@ model User {
   password      String?
   image         String?
   role          String?   @default("user")
+  phone String?
   emailVerified DateTime?
   accounts      Account[]
   sessions      Session[]
@@ -68,6 +69,7 @@ model Sumbangan {
   location          String
   status_pengiriman String?   @default("menunggu")
   isShow            Boolean   @default(true)
+  imageUrl          String?
   blog              blog[]
   comment           Comment[]
   donasi            Donasi[]
@@ -110,5 +112,6 @@ model blog {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime
   sumbanganId String
+  imageUrl    String?
   sumbangan   Sumbangan @relation(fields: [sumbanganId], references: [id], onDelete: Cascade)
 }

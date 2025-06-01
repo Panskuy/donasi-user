@@ -59,7 +59,7 @@ const ButtonTambahDonasi = ({ userId, sumbanganId }) => {
   };
 
   return (
-    <div className="w-full lg:w-fit z-50">
+    <div className={`w-full lg:w-fit ${isOpen ? "z-50" : "z-20"}`}>
       <button
         onClick={() => setIsOpen(true)}
         className="w-full bg-blue-800 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-sm sm:text-base transition"
@@ -86,9 +86,7 @@ const ButtonTambahDonasi = ({ userId, sumbanganId }) => {
             }`}
           >
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-green-800 text-xl font-semibold">
-                Form Donasi
-              </h2>
+              <h2 className="text-blue-800 text-xl font-semibold">Donasi</h2>
               <button
                 onClick={closeModal}
                 className="bg-blue-100 hover:bg-blue-800 text-blue-800 hover:text-white px-4 py-2 rounded-lg transition-all"
@@ -98,13 +96,13 @@ const ButtonTambahDonasi = ({ userId, sumbanganId }) => {
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <label className="text-green-900 font-medium">
+              <label className="text-blue-900 font-medium">
                 Daftar Item Donasi (pisahkan dengan koma):
                 <textarea
                   rows={4}
                   value={items}
                   onChange={(e) => setItems(e.target.value)}
-                  className="mt-1 w-full p-2 border border-green-300 rounded"
+                  className="mt-1 w-full p-2 border border-blue-300 ring-0 focus:ring-blue-600 rounded"
                   placeholder="Contoh: Beras 5kg, Susu 2 kaleng, Pakaian"
                 />
               </label>

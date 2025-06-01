@@ -8,6 +8,9 @@ const nextConfig = {
       {
         hostname: "placehold.co",
       },
+      {
+        hostname: "kapilerindonesia.com",
+      },
     ],
   },
 };

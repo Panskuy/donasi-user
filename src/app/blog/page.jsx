@@ -24,10 +24,10 @@ const page = async ({ searchParams }) => {
 
   return (
     <div>
-      <SearchBlogInput />
       <h1 className="text-center text-3xl mb-4 font-bold text-blue-900">
         Blog
       </h1>
+      <SearchBlogInput />
       <SectionBlog blog={blog} title={"Blog"} />
     </div>
   );

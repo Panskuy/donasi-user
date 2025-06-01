@@ -9,34 +9,59 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 
-import Autoplay from "embla-carousel-autoplay";
-import useEmblaCarousel from "embla-carousel-react";
 import Link from "next/link";
+import Image from "next/image";
 
-const Hero = ({ blog }) => {
-  const [emblaRef] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 3000 }),
-  ]);
-
+const Hero = () => {
+  const HeroList = [
+    {
+      title: "judul",
+      description: "deskripsi",
+      link: `/sumbangan/67360530-4e3f-4fc4-8913-79a17f6256cd`,
+    },
+    {
+      title: "judul",
+      description: "deskripsi",
+      link: `/sumbangan/67360530-4e3f-4fc4-8913-79a17f6256cd`,
+      image: "/images/senyum-anak-yatim.jpg",
+    },
+  ];
   return (
     <div className="mt-16">
       <Carousel>
-        <CarouselContent options={{ perView: 2, gap: "0.5rem" }} ref={emblaRef}>
-          {blog.map((item) => {
+        <CarouselContent options={{ perView: 2, gap: "0.5rem" }}>
+          <CarouselItem>
+            <Link href="https://forms.gle/SWcLsbCLeFBxYWnTA">
+              <div className="relative w-full h-96 lg:h-[500px] p-2">
+                <Image
+                  src="/images/senyum-anak-yatim.jpg"
+                  alt="Background Image"
+                  fill
+                  className="object-cover rounded-lg"
+                  priority
+                />
+
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-black/0 to-black/60 flex flex-col justify-center items-center lg:items-start lg:justify-end p-8 text-center">
+                  <h1 className="text-4xl font-bold text-white drop-shadow-lg">
+                    Daftar Panti Asuhan Sekarang!
+                  </h1>
+                  <p className=" text-md text-white drop-shadow">
+                    Daftar Sekarang!
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </CarouselItem>
+
+          {HeroList.map((item, index) => {
             return (
-              <CarouselItem className="basis-1/2" key={item.id}>
-                <Link href={`/sumbangan/${item.sumbangan.id}`}>
-                  <div className="w-full h-60 p-2">
-                    <div className="w-full h-full bg-gradient-to-b from-blue-400 to-blue-700 rounded-lg text-white flex flex-col items-center justify-between p-4">
-                      <div className="w-full">{item.sumbangan.location}</div>
-                      <div className="text-center">
-                        <h1 className="text-xl font-bold  text-white">
-                          {item.title}
-                        </h1>
-                        <p className="mt-2 text-sm ">{item.content}</p>
-                      </div>
-                      <div className="w-full text-end">
-                        {item.sumbangan.location}
+              <CarouselItem className=" " key={index}>
+                <Link href={`${item.link}`}>
+                  <div className="w-full h-96 lg:h-[500px] p-2">
+                    <div className="w-full h-full bg-gradient-to-b from-black/80 to-black rounded-2xl text-white flex flex-col justify-center items-center lg:items-start lg:justify-end  p-4">
+                      <div>
+                        <h1 className="font-bold text-3xl">{item.title}</h1>
+                        <p className="text-lg">{item.description}</p>
                       </div>
                     </div>
                   </div>
@@ -44,19 +69,6 @@ const Hero = ({ blog }) => {
               </CarouselItem>
             );
           })}
-
-          <CarouselItem>
-            <Link href={"https://forms.gle/SWcLsbCLeFBxYWnTA"}>
-              <div className="w-full h-60 p-2">
-                <div className="w-full h-full bg-gradient-to-b from-green-400 to-green-700 rounded-lg flex flex-col items-center justify-center">
-                  <h1 className="text-3xl font-bold text-center text-white">
-                    Daftar Sumbangan
-                  </h1>
-                  <p className="mt-2 text-sm text-white">Daftar Sekarang!</p>
-                </div>
-              </div>
-            </Link>
-          </CarouselItem>
         </CarouselContent>
 
         <CarouselPrevious />

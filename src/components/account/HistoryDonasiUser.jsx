@@ -9,7 +9,7 @@ const HistoryDonasiUser = ({ historyDonasiById }) => {
         <Link
           key={donasi.id}
           href={`/sumbangan/${donasi.sumbangan?.id}`}
-          className="flex flex-col justify-between bg-white border hover:bg-blue-400 hover:border-blue-400 rounded-lg shadow-md p-5  transition-all h-full"
+          className="flex flex-col justify-between bg-white border hover:bg-blue-50 hover:border-blue-400 rounded-lg shadow-md p-5  transition-all h-full"
         >
           {/* Judul dan lokasi sumbangan */}
           <div className="mb-3">
@@ -41,8 +41,7 @@ const HistoryDonasiUser = ({ historyDonasiById }) => {
             )}
           </div>
 
-          {/* Status pengiriman */}
-          <div className="flex items-center gap-2 text-green-700 text-sm font-medium">
+          <div className="flex items-center gap-2 text-blue-700 text-sm font-medium">
             <Package size={18} />
             <span className="first-letter:uppercase">
               {donasi.status_pengiriman ?? "Status tidak tersedia"}

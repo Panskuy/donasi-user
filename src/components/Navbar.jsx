@@ -24,8 +24,7 @@ const Navbar = async () => {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white text-primary shadow-md z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center p-4 px-6">
-        {/* Logo */}
+      <div className="max-w-[1600px] mx-auto flex justify-between items-center p-4 px-6">
         <Link
           href="/"
           className="text-2xl font-bold tracking-wide hover:opacity-90 flex items-center gap-2"
@@ -42,7 +41,7 @@ const Navbar = async () => {
 
         <nav
           className={`hidden md:flex gap-6 text-text-primary font-medium ${
-            user ? "-mr-28" : null
+            user ? "-mr-20" : "-ml-16"
           }`}
         >
           {NavList.map((item, index) => {
@@ -58,7 +57,6 @@ const Navbar = async () => {
           })}
         </nav>
 
-        {/* User Info & Button */}
         <div className="flex items-center gap-4">
           {user ? (
             <Link

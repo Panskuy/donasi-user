@@ -9,6 +9,7 @@ export const EditProfileButtons = ({ user }) => {
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState(user?.name || "");
   const [email, setEmail] = useState(user?.email || "");
+  const [phone, setPhone] = useState("");
   const router = useRouter();
 
   const handleEditUser = async () => {
@@ -16,7 +17,7 @@ export const EditProfileButtons = ({ user }) => {
       const res = await fetch("/api/account/edit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name: username }),
+        body: JSON.stringify({ email, name: username, phone: phone }),
       });
 
       const data = await res.json();
@@ -58,6 +59,20 @@ export const EditProfileButtons = ({ user }) => {
 
             <div className="space-y-4">
               <div className="flex flex-col">
+                <label htmlFor="email" className="text-sm text-gray-700 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  placeholder="Masukkan username baru"
+                  disabled
+                />
+              </div>
+              <div className="flex flex-col">
                 <label
                   htmlFor="username"
                   className="text-sm text-gray-700 mb-1"
@@ -74,17 +89,16 @@ export const EditProfileButtons = ({ user }) => {
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="email" className="text-sm text-gray-700 mb-1">
-                  Username
+                <label htmlFor="phone" className="text-sm text-gray-700 mb-1">
+                  No Telp
                 </label>
                 <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  type="number"
+                  id="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                   placeholder="Masukkan username baru"
-                  disabled
                 />
               </div>
 

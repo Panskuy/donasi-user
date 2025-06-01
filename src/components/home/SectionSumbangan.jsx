@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -11,6 +12,7 @@ const SectionSumbagan = async ({ sumbangan, href }) => {
       </section>
     );
   }
+
   return (
     <section className="mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -18,9 +20,16 @@ const SectionSumbagan = async ({ sumbangan, href }) => {
           <Link
             href={`/sumbangan/${item.id}`}
             key={item.id}
-            className="border border-border-light rounded-xl p-6 shadow-sm hover:shadow-lg hover:translate-y-1 transition-all duration-300 bg-background-card"
+            className="border border-border-light rounded-xl p-6 shadow-sm hover:shadow-lg hover:shadow-blue-100 hover:border-blue-300 transition-all duration-300 bg-white group"
           >
-            <h3 className="text-2xl font-semibold text-text-primary mb-3">
+            <Image
+              src={item.imageUrl || "https://placehold.co/600x400/png"}
+              width={400}
+              height={250}
+              alt={item.title}
+              className="rounded-md mb-4 object-cover w-full h-auto"
+            />
+            <h3 className="text-2xl font-semibold text-text-primary group-hover:text-blue-800 mb-3 transition-all duration-300">
               {item.title}
             </h3>
             <p className="text-text-secondary mb-4 min-h-[60px] line-clamp-3 text-justify">
@@ -34,13 +43,16 @@ const SectionSumbagan = async ({ sumbangan, href }) => {
         ))}
       </div>
 
-      {href ? (
-        <Link href={href} className="flex justify-end mt-6">
-          <span className="bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-lg text-white border border-green-600/20">
+      {href && (
+        <div className="flex justify-end mt-6">
+          <Link
+            href={href}
+            className="bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-lg text-white border border-green-600/20"
+          >
             Lihat Semua
-          </span>
-        </Link>
-      ) : null}
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

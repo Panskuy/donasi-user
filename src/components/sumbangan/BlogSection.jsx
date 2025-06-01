@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const BlogSection = ({ blog }) => {
   return (
-    <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[800px] overflow-auto px-0 lg:pr-2">
+    <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-h-[800px] overflow-auto px-0 lg:pr-2">
       {blog.map((item) => (
         <div
           key={item.id}

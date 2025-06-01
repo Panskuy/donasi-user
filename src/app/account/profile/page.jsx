@@ -35,11 +35,8 @@ const page = async () => {
           <p className="text-lg font-medium text-gray-800">
             {findUser?.name || "Pengguna"}
           </p>
-          {/* Optional Edit button */}
-          <EditProfileButtons user={findUser} />
         </div>
 
-        {/* User Info */}
         <div className="flex-1 space-y-4">
           <div className="flex items-center gap-3 text-gray-700">
             <UserIcon className="text-blue-500 w-5 h-5" />
@@ -64,13 +61,7 @@ const page = async () => {
               {findUser?.phone || "Tidak tersedia"}
             </p>
           </div>
-          <div className="flex items-center gap-3 text-gray-700">
-            <ShieldCheckIcon className="text-blue-500 w-5 h-5" />
-            <p>
-              <span className="font-semibold text-gray-900">Role:</span>{" "}
-              {findUser?.role || "user"}
-            </p>
-          </div>
+          <EditProfileButtons user={findUser} />
         </div>
       </div>
     </div>

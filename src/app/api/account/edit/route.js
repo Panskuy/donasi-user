@@ -4,18 +4,28 @@ import prisma from "@/lib/prisma";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { email, name } = body;
+    const { email, name, phone } = body;
 
-    if (!email || !name) {
+    if (!email) {
       return NextResponse.json(
-        { message: "Email dan nama wajib diisi." },
+        { message: "Email wajib diisi." },
+        { status: 400 }
+      );
+    } else if (!name) {
+      return NextResponse.json(
+        { message: "name wajib diisi." },
+        { status: 400 }
+      );
+    } else if (!phone) {
+      return NextResponse.json(
+        { message: "phone wajib diisi." },
         { status: 400 }
       );
     }
 
     const updatedUser = await prisma.user.update({
       where: { email },
-      data: { name },
+      data: { name, phone: phone },
     });
 
     return NextResponse.json({

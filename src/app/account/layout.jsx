@@ -2,6 +2,11 @@ import { NavbarAccount } from "@/components/account/NavbarAccount";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import { redirect } from "next/navigation";
 
+export const metadata = {
+  title: "Account",
+  description: "Kasiba.com",
+};
+
 const layout = async ({ children }) => {
   const user = await getCurrentUser();
 
