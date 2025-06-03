@@ -109,7 +109,7 @@ export const EditProfileButtons = ({ user }) => {
               </div>
               <div className="flex flex-col">
                 <label htmlFor="address" className="text-sm text-gray-700 mb-1">
-                  No Telp
+                  Alamat
                 </label>
                 <input
                   type="text"
