@@ -3,7 +3,7 @@ import { CalendarDays } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const SectionBlog = ({ blog, title, href }) => {
+const SectionBlog = ({ blog, href }) => {
   return (
     <section className="w-full">
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">

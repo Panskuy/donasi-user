@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { email, name, phone } = body;
+    const { email, name, phone, address } = body;
 
     if (!email) {
       return NextResponse.json(
@@ -25,7 +25,7 @@ export async function POST(req) {
 
     const updatedUser = await prisma.user.update({
       where: { email },
-      data: { name, phone: phone },
+      data: { name, phone: phone, address: address },
     });
 
     return NextResponse.json({

@@ -45,11 +45,7 @@ export default async function Home() {
         <h2 className="text-3xl font-bold text-primary mb-10 text-center">
           Blog
         </h2>
-        <SectionBlog
-          blog={blog.slice(0, 3)}
-          title={"Blog Kami"}
-          href={"/blog"}
-        />
+        <SectionBlog blog={blog.slice(0, 3)} href={"/blog"} />
       </div>
 
       <div>

@@ -16,6 +16,8 @@ const page = async () => {
     },
   });
 
+  console.log(findUser);
+
   return (
     <div className=" mx-auto px-6">
       <h1 className="text-4xl font-bold text-gray-900 mb-8 border-b pb-4">
@@ -59,6 +61,13 @@ const page = async () => {
                 Nomor Telepon:
               </span>{" "}
               {findUser?.phone || "Tidak tersedia"}
+            </p>
+          </div>
+          <div className="flex items-center gap-3 text-gray-700">
+            <PhoneIcon className="text-blue-500 w-5 h-5" />
+            <p>
+              <span className="font-semibold text-gray-900">Alamat:</span>{" "}
+              {findUser?.address || "Tidak tersedia"}
             </p>
           </div>
           <EditProfileButtons user={findUser} />

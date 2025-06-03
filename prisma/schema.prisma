@@ -17,7 +17,8 @@ model User {
   password      String?
   image         String?
   role          String?   @default("user")
-  phone String?
+  phone         String?
+  address       String?
   emailVerified DateTime?
   accounts      Account[]
   sessions      Session[]
